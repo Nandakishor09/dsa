@@ -101,7 +101,6 @@ int main(){
     
     ListNode *head1 = ll(arr1);
 
-    
     ListNode *newHead = sortList(head1);
     print(newHead);
     
