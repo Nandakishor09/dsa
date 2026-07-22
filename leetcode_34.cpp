@@ -13,10 +13,10 @@ vector<int> searchRange(vector<int>& nums, int target) {
         if(nums[mid] > target){
             right = mid - 1;
         }
-        if(nums[mid] < target){
+        else if(nums[mid] < target){
             left = mid + 1;
         }
-        if(nums[mid] == target){
+        else if(nums[mid] == target){
             check = 1;
             if(nums.size() == 1){
                 ans.push_back(mid);
