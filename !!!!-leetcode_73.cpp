@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//this is not the correct solution.
+//debugging is needed.
 
 void setZeroes(vector<vector<int>> &matrix) {
         
