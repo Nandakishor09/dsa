@@ -1,6 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Rearrange Array Elements by Sign
+//The array follows the given conditions:
+//1.Every consecutive pair of integers have opposite signs.
+//2.For all integers with the same sign, the order in which they were present in nums is preserved.
+//3.The rearranged array begins with a positive integer.
+
 vector<int> rearrangeArray(vector<int>& nums) {
         
     int n = nums.size();
