@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//better solution
 /*int subarraySum(vector<int>& nums, int k) {
         
     int ans = 0;
@@ -23,6 +24,9 @@ using namespace std;
     return ans;
 }*/
 
+//optimal solution
+//logic -- prefix sum algo
+//subArray = sum_till_i_index - previous_sums
 int subarraySum(vector<int>& nums, int k){
     
     int preSum = 0, ans = 0;
