@@ -26,13 +26,13 @@ Node* createTree(vector<int> &arr, int i, int n){
     return root;
 }
 
-void print(Node *root){
+void preOrder(Node *root){
     if(root == nullptr)
         return;
 
     cout<<root->data<<" ";
-    print(root->left);
-    print(root->right);
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
 int main(){
@@ -42,7 +42,7 @@ int main(){
 
     Node *root = createTree(arr, 0, n);
 
-    print(root);
+    preOrder(root);
 
     return 0;
 
