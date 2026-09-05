@@ -35,6 +35,28 @@ void preOrder(Node *root){
     preOrder(root->right);
 }
 
+vector<int> preOrder_iterative(Node *root){
+    vector<int> preOrder;
+    if(root == nullptr) 
+        return preOrder;
+
+    stack<Node*> st;
+    st.push(root);
+
+    while(!st.empty()){
+        Node *node = st.top();
+        st.pop();
+        preOrder.push_back(node->data);
+
+        if(node->right != nullptr)
+            st.push(node->right);
+        if(node->left != nullptr)
+            st.push(node->left);
+
+    }
+    return preOrder;
+}
+
 int main(){
     vector<int> arr = {10, 20, 30, 40, 50, 60, 70};
 
@@ -42,7 +64,13 @@ int main(){
 
     Node *root = createTree(arr, 0, n);
 
-    preOrder(root);
+    preOrder(root); cout<<endl;
+
+    vector<int> tree = preOrder_iterative(root);
+
+    for(int i = 0; i < tree.size(); i++){
+        cout<<tree[i]<<" ";
+    }
 
     return 0;
 
