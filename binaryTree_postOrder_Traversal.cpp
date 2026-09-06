@@ -36,6 +36,30 @@ void postOrder(Node *root){
     cout<<root->data<<" ";
 }
 
+vector<int> postOrder_Iterative(Node *root){
+    vector<int> postOrder;
+    if(root == NULL) return postOrder;
+
+    stack<Node*> s1, s2;
+    s1.push(root);
+
+    while(!s1.empty()){
+        root = s1.top();
+        s1.pop();
+        s2.push(root);
+        if(root->right != nullptr)
+            s1.push(root->left);
+        if(root->left != nullptr)
+            s1.push(root->right);
+    }
+
+    while(!s2.empty()){
+        postOrder.push_back(s2.top()->data);
+        s2.pop();
+    }
+
+    return postOrder;
+}
 int main(){
     vector<int> arr = {10, 20, 30, 40, 50, 60, 70};
 
@@ -43,7 +67,12 @@ int main(){
 
     Node *root = createTree(arr, 0, n);
 
-    postOrder(root);
+    postOrder(root); cout<<endl;
+
+    vector<int> tree = postOrder_Iterative(root);
+    for(int i = 0; i < tree.size(); i++){
+        cout<<tree[i]<<" ";
+    }
 
     return 0;
 
