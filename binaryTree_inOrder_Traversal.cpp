@@ -35,6 +35,27 @@ void inOrder(Node *root){
     inOrder(root->right);
 }
 
+vector<int> inOrder_iterative(Node *root){
+
+    vector<int> ans;
+    stack<Node*> st;
+    Node *node = root;
+
+    while(true){
+        if(node != nullptr){
+            st.push(node);
+            node = node->left;
+        }
+        else{
+            if(st.empty() == true) break;
+            node = st.top();
+            st.pop();
+            ans.push_back(node->data);
+            node = node->right;
+        }
+    }
+    return ans;
+}
 int main(){
     vector<int> arr = {10, 20, 30, 40, 50, 60, 70};
 
@@ -42,8 +63,12 @@ int main(){
 
     Node *root = createTree(arr, 0, n);
 
-    inOrder(root);
+    inOrder(root); cout<<endl;
 
+    vector<int> tree = inOrder_iterative(root);
+    for(int i = 0; i < tree.size(); i++){
+        cout<<tree[i]<<" ";
+    }
     return 0;
 
 }
