@@ -63,11 +63,20 @@ void print(Node *root){
     }
 }
 
+int depth(Node *root){
+    if(root == nullptr)
+        return 0;
+    
+    int lh = depth(root->left);
+    int rh = depth(root->right);
+    
+    return 1 + max(lh, rh); 
+}
 int main(){
     Node *root = createTree();
-
     print(root);
-    depth(root);
+
+    cout<<"Depth of binary tree: "<<depth(root)<<endl;
 
     return 0;
 }
