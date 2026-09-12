@@ -61,7 +61,7 @@ int main(){
 
     int n = arr.size();
 
-    Node *root = createTree(arr, 0, n);
+    Node *root = createTree(arr, 0, n); 
 
     inOrder(root); cout<<endl;
 
