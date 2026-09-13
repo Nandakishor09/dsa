@@ -67,21 +67,24 @@ int height(Node *root){
         return 0;
 
     int lh = height(root->left);
+    if(lh == -1)
+        return -1;
     int rh = height(root->right);
-
-    if(lh == -1) return -1;
-    if(rh == -1) return -1;
+    if(lh == -1)
+        return -1;
 
     if(abs(rh - lh) > 1) 
         return -1;
     return max(lh, rh) + 1;
 }
+
 void balancedBT(Node *root){
     if(height(root) == -1)
         cout<<"Not Balanced";
     else
         cout<<"Balanced";
 }
+
 int main(){
     Node *root = createTree();
     print(root);
