@@ -70,7 +70,7 @@ int height(Node *root){
     if(lh == -1)
         return -1;
     int rh = height(root->right);
-    if(lh == -1)
+    if(rh == -1)
         return -1;
 
     if(abs(rh - lh) > 1) 
