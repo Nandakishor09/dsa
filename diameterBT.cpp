@@ -71,6 +71,7 @@ int depth(Node *root, int &diameter){
     diameter = max(diameter, lh + rh);
     return 1 + max(lh, rh);
 }
+
 int diameterOfBinaryTree(Node* root) {
     int ans = 0;
     depth(root, ans);
