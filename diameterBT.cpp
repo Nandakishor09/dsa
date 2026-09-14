@@ -62,8 +62,27 @@ void print(Node *root){
         cout<<endl;
     }
 }
+int depth(Node *root){
+    if(root == nullptr)
+        return 0;
+
+    int lh = depth(root->left);
+    int rh = depth(root->right);
+    
+    return 1 + max(lh, rh);
+}
+int diameter(Node *root){
+    int left = depth(root->left);
+    int right = depth(root->right);
+    
+    return left + right;
+}
 
 int main(){
     Node *root = createTree();
-    print(root);
+    print(root); cout<<endl;
+
+    cout<<"Diameter of Binary Tree: "<<diameter(root)<<endl; 
+
+    return 0;
 }
