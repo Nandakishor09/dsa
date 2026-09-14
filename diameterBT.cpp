@@ -73,7 +73,7 @@ int depth(Node *root, int &diameter){
 }
 int diameterOfBinaryTree(Node* root) {
     int ans = 0;
-    ans = depth(root, ans);
+    depth(root, ans);
     return ans;
 }
 
