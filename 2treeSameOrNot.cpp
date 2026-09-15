@@ -62,7 +62,15 @@ void print(Node *root){
         cout<<endl;
     }
 }
+bool isSameTree(TreeNode* p, TreeNode* q) {
+    if(q == NULL || p == NULL){
+        return (q == p);
+    }
 
+    return (p->val == q->val) 
+    && isSameTree(p->left, q->left)
+    && isSameTree(p->right, q->right);
+}
 
 int main(){
     Node *root1 = createTree();
@@ -70,5 +78,11 @@ int main(){
     Node *root2= createTree();
     print(root2);
 
-    
+    if(isSameTree(root1, root2)){
+        cout<<"Same"<<endl;
+    }else{
+        cout<<"Not Same"<<endl;
+    }
+
+    return 0;
 }
