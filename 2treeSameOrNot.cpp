@@ -62,12 +62,12 @@ void print(Node *root){
         cout<<endl;
     }
 }
-bool isSameTree(TreeNode* p, TreeNode* q) {
+bool isSameTree(Node* p, Node* q) {
     if(q == NULL || p == NULL){
         return (q == p);
     }
 
-    return (p->val == q->val) 
+    return (p->data == q->data) 
     && isSameTree(p->left, q->left)
     && isSameTree(p->right, q->right);
 }
