@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int firstUniqChar(string s) {
+/*int firstUniqChar(  string s) {
     int len = s.size();
     for(int i = 0; i < len; i++){
         int check = 0;
@@ -20,6 +20,20 @@ int firstUniqChar(string s) {
         if(check == 0){
             return i;
         } 
+    }
+    return -1;
+}*/
+
+int firstUniqChar(string s){
+    map<char, int> mpp;
+    int len = s.size();
+
+    for(int i = 0; i < len; i++){
+        ++mpp[s[i]];
+    }
+    for(int i = 0; i < len; i++){
+        if(mpp[s[i]] == 1) 
+            return i;
     }
     return -1;
 }
