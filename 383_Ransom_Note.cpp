@@ -26,6 +26,21 @@ bool canConstruct(string ransomNote, string magazine) {
     return true;
 }
 
+//Better Solution
+bool canConstruct(string ransomNote, string magazine) {
+    vector<int>mp(26,0);
+    for(char c: magazine){
+        mp[c-'a']++;
+    }
+    for(char c: ransomNote){
+        mp[c-'a']--;
+        if(mp[c-'a']<0){
+            return false;
+        }
+    }
+    return true;
+}
+
 int main(){
     string s1 = "aa", s2 = "aab";
     cout<<canConstruct(s1, s2);
