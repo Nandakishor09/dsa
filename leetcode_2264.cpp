@@ -8,9 +8,9 @@ string largestGoodInteger(string num) {
 
     if(len == 3){
         if(num[0] == num[1] && num[0]== num[2]){
-                return num;
+            return num;
         }else{
-                return "";
+            return "";
         }
     }
     for(int i = 0; i < len - 2; i++){
