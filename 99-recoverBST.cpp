@@ -36,38 +36,40 @@ void print(Node *root){
     print(root->right);
 }
 
-//this logic is wrong......
-//debugging is needed......
-void recoverTree(Node* root) {
-    if(root == NULL)
-        return;
-    if(root->left != NULL && root->left->data < root->data){
-        recoverTree(root->left);
-    }else{
-        if(root->left != NULL){
-            int temp = root->left->data;
-            root->left->data = root->data;
-            root->data = temp;
-            return;
+//idk how this logic works. Still trying to understand the logic
+//all thanks to striver....
+
+Node *first, *previous, *middle, *last;
+void inOrder(Node *root){
+    if(root == NULL) return;
+    inOrder(root->left);
+    if(previous != NULL && (root->data < previous->data)){
+        if(first == NULL){
+            first = previous;
+            middle = root;
         }else{
-            return;
+            last = root;
         }
     }
-    if(root->right != NULL && root->right->data > root->data){
-        recoverTree(root->right);
-    }else{
-        if(root->right != NULL){
-            int temp = root->right->data;
-            root->right->data = root->data;
-            root->data = temp;
-            return;
-        }else{
-            return;
-        }
+    previous = root;
+    inOrder(root->right);
+}
+
+void recoverTree(Node* root) {
+    first = NULL;
+    middle = NULL;
+    last = NULL;
+    previous = new Node(INT_MIN);
+    inOrder(root);
+    if(first && last){
+        swap(first->data, last->data);
+    }else if(first && middle){
+        swap(first->data, middle->data);
     }
 }
 
 int main(){
+    //Node *first, *prev, *middle, *last;
     vector<int> arr = {1,2,3,4,6};
     Node *root = new Node(arr[0]);
 
