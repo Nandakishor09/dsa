@@ -35,7 +35,7 @@ using namespace std;
     return false;
 }*/
 
-bool checkValidString(string s){
+/*bool checkValidString(string s){
     stack<char> st;
     int count = 0;
     int len = s.size();
@@ -58,6 +58,42 @@ bool checkValidString(string s){
     if(st.empty())
         return true;
     return false;
+}*/
+
+//Correct Solution...
+bool checkValidString(string s){
+    stack<int> open;
+    stack<int> star;
+
+    for(int i = 0; i < s.size(); i++) {
+        if(s[i] == '(') {
+            open.push(i);
+        }
+        else if(s[i] == '*') {
+            star.push(i);
+        }
+        else {
+            if(!open.empty()) {
+                open.pop();
+            }
+            else if(!star.empty()) {
+                star.pop();
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    while(!open.empty() && !star.empty()) {
+        if(open.top() > star.top())
+            return false;
+
+        open.pop();
+        star.pop();
+    }
+
+    return open.empty();
 }
 
 int main(){
