@@ -14,8 +14,8 @@ bool isPalindrome(string s) {
 
         if((leftChar >= 97 && leftChar <= 122 && rightChar >= 97 && rightChar <= 122)
             || (leftChar >= 48 && leftChar <= 57 && rightChar >= 48 && rightChar <= 57)
-            || (leftChar >= 97 && leftChar <= 122 && rightChar >= 48 && rightChar <= 57
-            || (leftChar >= 48 && leftChar <= 57 && rightChar >= 97 && rightChar <= 122))){
+            || (leftChar >= 97 && leftChar <= 122 && rightChar >= 48 && rightChar <= 57)
+            || (leftChar >= 48 && leftChar <= 57 && rightChar >= 97 && rightChar <= 122)){
             flag++;
             if(leftChar == rightChar){
                 left++;
