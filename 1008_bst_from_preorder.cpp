@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class TreeNode{
+public:
+    int value;
+    TreeNode *left, *right;
+    TreeNode(int val){
+        value = val;
+        left = nullptr;
+        right = nullptr;
+    }
+};
+
+TreeNode *helper(vector<int>& preorder, int &i, int bound){
+    if(i == preorder.size() ||  preorder[i] > bound)
+        return NULL;
+
+    TreeNode *root = new TreeNode(preorder[i++]);
+    root->left = helper(preorder, i, root->val);
+    root->right = helper(preorder, i, bound);
+    return root;
+}
+
+TreeNode* bstFromPreorder(vector<int>& preorder) {
+    int i = 0;
+    return helper(preorder, i, INT_MAX);
+}
