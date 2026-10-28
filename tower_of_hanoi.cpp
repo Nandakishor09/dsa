@@ -1,5 +1,5 @@
 
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 void towerOfHanoi(int n, char source,
@@ -36,7 +36,7 @@ int main() {
 
     towerOfHanoi(n, 'A', 'B', 'C');
 
-    cout << "Minimum moves: " << ((1LL << n) - 1) << endl;
+    cout << "Minimum moves: " << pow(2, n) - 1 << endl;
 
     return 0;
 }
