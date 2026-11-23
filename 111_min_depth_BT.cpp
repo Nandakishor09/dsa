@@ -62,7 +62,8 @@ void levelOrder(Node *root){
     }
 }
 
-Node *findLeafs(Node *root, vector<Node*> &leafs){
+//not optimal and wont work for huge inputs
+/*Node *findLeafs(Node *root, vector<Node*> &leafs){
     if(root->left == NULL && root->right == NULL){
         leafs.push_back(root);
         return root;
@@ -81,20 +82,6 @@ Node *findLeafs(Node *root, vector<Node*> &leafs){
     return root;
 }
 
-/*void findHeight(Node *root, Node *l, int &height){
-    if(root != NULL){
-        if(root->data == l->data){
-            height++;
-            return;
-        }
-        else{
-            height++;
-            return findHeight(root->left, l, height);
-            return findHeight(root->right, l, height);
-        }
-    }
-
-}*/
 
 int findHeight(Node *root, Node *l){
     if(root->data == l->data){
@@ -146,6 +133,43 @@ void minDepth(Node* root) {
         }
     }
     cout<<mini<<endl;
+}*/
+
+//optimal 
+int minDepth(TreeNode* root) {
+    if(root == NULL)
+        return 0;
+    queue<TreeNode*> q;
+    q.push(root);
+
+    int depth = 1;
+
+    while(!q.empty()){
+        int size = q.size();
+        int c = 0;
+
+        for(int i = 0; i < size; i++){
+            TreeNode *top = q.front();
+            q.pop();
+
+            if(top->left == NULL && top->right == NULL){
+                c = 1;
+                break;
+            }
+            if(top->left != NULL){
+                q.push(top->left);
+            }
+            if(top->right != NULL){
+                q.push(top->right);
+            }
+
+        }
+        if(c == 1)
+            break;
+        depth++;
+    }
+
+    return depth;
 }
 
 int main(){

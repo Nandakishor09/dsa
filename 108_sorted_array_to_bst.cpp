@@ -12,7 +12,7 @@ public:
     }
 };
 
-
+//stupid logic it wont work.......
 void *bst(TreeNode *root, TreeNode *newNode, TreeNode *prev){
     if(root == NULL){
         if(prev->left == NULL){
